@@ -14,6 +14,7 @@ from django.core.mail import send_mail
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from backend.backend.settings import EMAIL_HOST_USER
 
 
 # Create your views here.
@@ -66,7 +67,7 @@ def signup(request):
         login(request, user)
         subject = 'Thanks for SignUp'
         message = f'Hi {user.username}, Thank you for joining our family. Looking forward to provide best service to you!.'
-        email_from = settings.EMAIL_HOST_USER
+        email_from = EMAIL_HOST_USER
         recipient_list = [user.email]
         send_mail(subject, message, email_from, recipient_list)
 
